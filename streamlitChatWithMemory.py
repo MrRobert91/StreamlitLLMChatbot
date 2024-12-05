@@ -14,11 +14,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Ahora puedes acceder a las variables de entorno
-LANGCHAIN_TRACING_V2 = os.getenv('LANGCHAIN_TRACING_V2')
-LANGCHAIN_API_KEY = os.getenv('LANGCHAIN_API_KEY')
+#LANGCHAIN_TRACING_V2 = os.getenv('LANGCHAIN_TRACING_V2')
+#LANGCHAIN_API_KEY = os.getenv('LANGCHAIN_API_KEY')
 #OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 #GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
+LANGCHAIN_TRACING_V2 = st.secrets.LANGCHAIN_TRACING_V2
+LANGCHAIN_API_KEY = st.secrets.LANGCHAIN_API_KEY
 
 # Get an Groq API Key before continuing
 if "GROQ_API_KEY" in st.secrets:
