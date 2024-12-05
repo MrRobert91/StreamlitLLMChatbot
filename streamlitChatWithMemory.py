@@ -7,6 +7,10 @@ from langchain_groq import ChatGroq
 
 import streamlit as st
 
+from fpdf import FPDF
+import base64
+import json
+
 import os
 from dotenv import load_dotenv
 
