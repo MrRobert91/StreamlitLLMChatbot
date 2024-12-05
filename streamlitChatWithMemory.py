@@ -79,14 +79,33 @@ if prompt := st.chat_input():
     response = chain_with_history.invoke({"question": prompt}, config)
     st.chat_message("ai").write(response.content)
 
-# Draw the messages at the end, so newly generated ones show up immediately
-#with view_messages:
-#    """
-#    Message History initialized with:
- #   ```python
-#    msgs = StreamlitChatMessageHistory(key="langchain_messages")
-#    ```
+export_as_pdf = st.button("Export Report")
 
-#    Contents of `st.session_state.langchain_messages`:
-#    """
-#    view_messages.json(st.session_state.langchain_messages)
+def create_download_link(val, filename):
+    b64 = base64.b64encode(val)  # val looks like b'...'
+    return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
+
+if export_as_pdf:
+    
+    # Create a PDF instance
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    
+    full_interview = ""
+
+    for msg in msgs.messages:
+        pdf.multi_cell(0, 10, msg.type+":")
+        pdf.multi_cell(0, 10, msg.content, border=1)
+
+        #full_interview =+ msg.type+":\n"+msg.content+"\n"
+        
+    
+    # Save the PDF to the specified path
+    html = create_download_link(pdf.output(dest="S").encode("latin-1"), "tech-enterview")
+
+    st.markdown(html, unsafe_allow_html=True)
+
+
+
