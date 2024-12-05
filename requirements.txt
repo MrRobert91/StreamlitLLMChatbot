@@ -16,6 +16,7 @@ distro==1.9.0
 faiss-cpu==1.8.0.post1
 fastapi==0.115.2
 filelock==3.16.1
+fpdf==1.7.2
 frozenlist==1.4.1
 fsspec==2024.10.0
 gitdb==4.0.11
@@ -58,6 +59,7 @@ openai==1.51.2
 orjson==3.10.7
 packaging==24.1
 pandas==2.2.3
+pdfkit==1.0.0
 pillow==10.4.0
 protobuf==5.28.2
 pyarrow==17.0.0
