@@ -46,8 +46,6 @@ msgs = StreamlitChatMessageHistory(key="langchain_messages")
 if len(msgs.messages) == 0:
     msgs.add_ai_message("Hola soy tu entrevistador hoy, cuentame un poco sobre tu experiencia con la tecnologia")
 
-#view_messages = st.expander("View the message contents in session state")
-
 # Set up the LangChain, passing in Message History
 
 prompt = ChatPromptTemplate.from_messages(
@@ -58,9 +56,6 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-#chain = prompt | ChatGroq(api_key=groq_api_key)
-#model = ChatGroq(model="llama3-8b-8192", api_key=GROQ_API_KEY)
-#model = ChatGroq(model="llama3-groq-70b-8192-tool-use-preview", api_key=GROQ_API_KEY)
 model = ChatGroq(model="llama-3.1-70b-versatile", api_key=GROQ_API_KEY)
 
 chain = prompt | model
